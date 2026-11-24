@@ -14,6 +14,12 @@ class Settings(BaseSettings):
     pinecone_namespace: str = "it-company-kb"
     embedding_model: str = "text-embedding-3-small"
     openai_model: str = "gpt-4o-mini"
+    model_provider: str = "huggingface"
+    hf_token: str = ""
+    hf_router_base_url: str = "https://router.huggingface.co/v1"
+    huggingface_chat_model: str = "meta-llama/Meta-Llama-3-8B-Instruct:featherless-ai"
+    huggingface_max_new_tokens: int = 256
+    huggingface_temperature: float = 0.2
     top_k: int = 4
     max_retries: int = 1
     admin_api_key: str = "change-me"
@@ -22,6 +28,7 @@ class Settings(BaseSettings):
     sample_kb_dir: str = str(BASE_DIR / "data" / "sample_kb")
 
     model_config = SettingsConfigDict(env_file=str(BASE_DIR / ".env"), extra="ignore")
+
 
 
 

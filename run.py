@@ -1,7 +1,9 @@
-import logging
+from app.services.ingestion import load_file, chunk_documents
+from pathlib import Path
+from app.rag.vectorstore import add_documents
 
-def configure_logging() -> None:
-    logging.basicConfig(
-        level=logging.INFO,
-        format="%(asctime)s | %(levelname)s | %(name)s | %(message)s",
-    )
+
+docs = load_file(Path("data/sample_kb/company_it_handbook.md"))
+docs = chunk_documents(docs)
+
+add_documents(docs)
